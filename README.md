@@ -109,10 +109,10 @@ python python_monitor_db.py
 ## 📸 Screenshots
 
 **Grafana dashboard — real-time conveyor belt signals**
-![Grafana Dashboard](screenshots/grafana_dashboard.png)
+![Grafana Dashboard](screenshots/grafana_dashboard.jpeg)
 
 **Full stack running — CODESYS + Factory I/O + Python + Grafana**
-![Full Stack](screenshots/full_stack.png)
+![Full Stack](screenshots/full_stack.jpeg)
 
 ---
 
