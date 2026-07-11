@@ -1,15 +1,13 @@
 # 📊 Industrial PLC Dashboard — Project 7
 
-Real-time industrial dashboard built with Grafana and SQLite. Visualizes live PLC signals from a CODESYS SoftPLC connected to a Factory I/O 3D simulation — replicating how SCADA systems display process data in manufacturing plants.
-
+Real-time industrial monitoring dashboard built with Grafana and SQLite. The project visualizes live PLC signals from a CODESYS SoftPLC connected to a Factory I/O 3D simulation, demonstrating a SCADA-like workflow for industrial data acquisition, storage and visualization.
 ---
 
 ## 📋 Project Overview
 
 This project completes the Industry 4.0 data stack. A Python script reads signals from a CODESYS SoftPLC via Modbus TCP, stores them in a SQLite time-series database, and Grafana renders them as a real-time industrial dashboard — the same architecture used in real plant monitoring systems.
 
-**Key achievement:** Full Industry 4.0 stack from PLC signal to visual dashboard, running entirely in software.
-
+**Key achievement:** End-to-end industrial data pipeline from PLC signal acquisition to historical storage and dashboard visualization, running entirely in software.
 ---
 
 ## 🏗️ Full Stack Architecture
@@ -75,6 +73,20 @@ ORDER BY timestamp ASC
 
 ---
 
+## 🧩 Technical Problem Solved
+
+This project solves the problem of moving raw PLC signals into a format that can be stored, queried and visualized over time.
+
+The main technical challenge was connecting three different layers:
+
+1. **Control layer:** CODESYS SoftPLC generates the process signals.
+2. **Communication layer:** Python reads PLC variables through Modbus TCP.
+3. **Data and visualization layer:** SQLite stores timestamped records and Grafana displays the historical signal behavior.
+
+This structure helped validate how industrial data can move from a PLC environment into a monitoring dashboard for troubleshooting, basic analysis and operational visibility.
+
+---
+
 ## 🛠️ Tools & Software
 
 | Tool | Version | Purpose |
@@ -106,6 +118,20 @@ python python_monitor_db.py
 
 ---
 
+
+## ✅ Validation
+
+The system was validated by checking the following behavior:
+
+- When the conveyor motor is running, `motor_running` changes to `1`.
+- When the conveyor stops, `motor_running` returns to `0`.
+- When an object reaches the sensor, `sensor_object` changes to `1`.
+- Each PLC signal is stored with a timestamp in SQLite.
+- Grafana correctly reads the database and displays the signal history as a time series.
+- Dashboard refresh confirms near real-time monitoring behavior.
+
+---
+
 ## 📸 Screenshots
 
 **Grafana dashboard — real-time conveyor belt signals**
@@ -134,6 +160,17 @@ This project is **Part 7** of an Industry 4.0 Engineer learning path:
 - ✅ Project 6 — PLC Python Modbus Monitor (Real-time data acquisition to CSV)
 - ✅ **Project 7 — Industrial PLC Dashboard (Python + SQLite + Grafana)**
 - 🔜 Project 8 — InfluxDB migration for true concurrent time-series storage
+
+---
+
+
+## 📚 Lessons Learned
+
+- How to connect a SoftPLC to an external Python application using Modbus TCP.
+- How to structure PLC signal data for storage in a relational database.
+- How timestamp format affects dashboard compatibility in Grafana.
+- How to separate control logic, data acquisition and visualization into different layers.
+- Why SQLite is useful for prototypes but limited for concurrent industrial monitoring.
 
 ---
 
